@@ -9,9 +9,9 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  background-image: url(./img/spacej.jpg);
+  /* background-image: url(./img/spacej.jpg);
   background-position: no-repeat;
-  background-size: cover;
+  background-size: cover; */
 }
 li {
   list-style: none;

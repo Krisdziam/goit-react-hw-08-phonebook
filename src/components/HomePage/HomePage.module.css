@@ -38,3 +38,8 @@
 .inputPadding {
   padding-bottom: 5px;
 }
+.subtitle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
