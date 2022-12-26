@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import styles from './Form.module.css';
+import styles from './HomePage.module.css';
 import { nanoid } from 'nanoid';
 import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';

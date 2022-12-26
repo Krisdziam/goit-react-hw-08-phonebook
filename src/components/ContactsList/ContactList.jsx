@@ -15,6 +15,7 @@ export const ContactList = ({ contacts }) => {
   };
   return (
     <div className={styles.containerList}>
+      <h2>Contacts</h2>
       <ul className={styles.list}>
         {contacts.map(({ name, number, id }) => (
           <li className={styles.item} key={id}>
