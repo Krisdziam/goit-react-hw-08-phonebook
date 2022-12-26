@@ -4,22 +4,27 @@ import { useSelector } from 'react-redux';
 import { useFetchContactsQuery } from 'redux/contactsApi';
 import { getContactFilter } from 'redux/contactsSlice';
 import { ContactList } from './ContactList';
+import Filter from 'components/Filter/Filter';
+// import {AddContactPage} from './Pages/AddContactPage/AddContactPage'
 
 const ContactsPage = () => {
-  const { data, isLoading } = useFetchContactsQuery();
+  const { data: contacts, isLoading } = useFetchContactsQuery();
   const filterContact = useSelector(getContactFilter);
 
   const filterContacts = () => {
-    return data.filter(contact =>
+    return contacts.filter(contact =>
       contact.name.toLowerCase().includes(filterContact)
     );
   };
 
   const filteredContacts =
-    filterContact === '' ? data : filterContacts();
+    filterContact === '' ? contacts : filterContacts();
 
   return (
     <>
+    {/* <AddContactPage/> */}
+   {contacts !== undefined &&
+        contacts.length > 0  && <Filter />}
       {isLoading && <Loader />}
       {filteredContacts && (
         <ContactList contacts={filteredContacts} />

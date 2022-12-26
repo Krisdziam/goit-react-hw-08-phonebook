@@ -6,8 +6,11 @@ export default function Navigation() {
   return (
     <div>
       <h1 className={styles.title}>Phonebook</h1>
+      
       <Links  to='contacts'>Contacts</Links>
       <Links to='/'>Home</Links>
+      <Links to='login'>Login</Links>
+      <Links to='Register'>Register</Links>
     </div>
   );
 }

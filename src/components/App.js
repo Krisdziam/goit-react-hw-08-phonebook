@@ -12,10 +12,10 @@ const LoginPage = lazy(() =>
 const RegisterPage = lazy(() =>
   import('./Pages/RegisterPage/RegisterPage')
 );
-const HomePage = lazy(() =>
-  import('./Pages/HomePage/HomePage')
+const AddContactPage = lazy(() =>
+  import('./Pages/AddContactPage/AddContactPage')
 );
-const ContactsList = lazy(() =>
+const ContactsPage = lazy(() =>
   import('./ContactsList/ContactsPage')
 );
 
@@ -24,10 +24,10 @@ export function App() {
     <Suspense fallback={<Loader />}>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<HomePage />} />
+          <Route index element={<AddContactPage />} />
           <Route
             path="contacts"
-            element={<ContactsList />}
+            element={<ContactsPage />}
           />
           <Route path="login" element={<LoginPage />} />
           <Route
