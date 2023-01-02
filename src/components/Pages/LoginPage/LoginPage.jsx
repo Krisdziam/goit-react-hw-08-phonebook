@@ -1,5 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { logIn } from 'redux/auth/operations';
+import { initialState } from 'redux/auth/slice';
+
 
 export default function LoginPage() {
   const dispatch = useDispatch();
@@ -7,6 +9,7 @@ export default function LoginPage() {
   const handleSubmit = e => {
     e.preventDefault();
     const form = e.currentTarget;
+    console.log(initialState);
     dispatch(
       logIn({
         email: form.elements.email.value,
