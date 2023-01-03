@@ -8,6 +8,7 @@ import { useAuth } from './hooks/useAuth';
 import Layout from './Layout/Layout';
 import Loader from './Loader/Loader';
 
+
 const LoginPage = lazy(() =>
   import('./Pages/LoginPage/LoginPage')
 );
@@ -22,14 +23,15 @@ const ContactsPage = lazy(() =>
 );
 
 export function App() {
+
   const dispatch = useDispatch();
   const { isRefreshing } = useAuth();
-console.log(isRefreshing);
+
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);
 
-  return (
+  return isRefreshing ? ( <Loader/>) : (
     <Suspense fallback={<Loader />}>
       <Routes>
         <Route path="/" element={<Layout />}>

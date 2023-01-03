@@ -7,7 +7,7 @@ import styles from './Layout.module.css';
 
 export default function Layout() {
   const { isLoggedIn } = useAuth();
-  console.log(isLoggedIn);
+ 
   return (
     <div className={styles.container}>
       <Navigation />
