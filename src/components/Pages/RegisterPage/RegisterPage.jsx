@@ -8,7 +8,7 @@ export default function RegisterPage() {
   const handleSubmit = e => {
     e.preventDefault();
     const form = e.currentTarget;
-    console.log(initialState);
+
     dispatch(
       register({
         name: form.elements.name.value,

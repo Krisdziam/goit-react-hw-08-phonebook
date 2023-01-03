@@ -1,19 +1,15 @@
 import { NavLink } from 'react-router-dom';
-import styles from './Navigation.module.css';
 import styled from 'styled-components';
-import { useAuth } from 'components/hooks/useAuth';
 
-export default function Navigation() {
-  const { isLoggedIn } = useAuth();
+export const AuthNav = () => {
   return (
     <div>
-      <h1 className={styles.title}>Phonebook</h1>
-
-      <Links to="/">Home</Links>
-      {isLoggedIn && <Links to="/contacts">Tasks</Links>}
+      <Links to="/register">Register</Links>
+      <Links to="/login">Log In</Links>
     </div>
   );
-}
+};
+
 export const Links = styled(NavLink)`
   display: inline-block;
   margin-left: 10px;

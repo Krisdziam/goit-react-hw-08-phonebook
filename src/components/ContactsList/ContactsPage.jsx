@@ -5,10 +5,10 @@ import { useFetchContactsQuery } from 'redux/contactsApi';
 import { getContactFilter } from 'redux/contactsSlice';
 import { ContactList } from './ContactList';
 import Filter from 'components/Filter/Filter';
-// import {AddContactPage} from './Pages/AddContactPage/AddContactPage'
 
 const ContactsPage = () => {
-  const { data: contacts, isLoading } = useFetchContactsQuery();
+  const { data: contacts, isLoading } =
+    useFetchContactsQuery();
   const filterContact = useSelector(getContactFilter);
 
   const filterContacts = () => {
@@ -22,9 +22,9 @@ const ContactsPage = () => {
 
   return (
     <>
-    {/* <AddContactPage/> */}
-   {contacts !== undefined &&
-        contacts.length > 0  && <Filter />}
+      {contacts !== undefined && contacts.length > 0 && (
+        <Filter />
+      )}
       {isLoading && <Loader />}
       {filteredContacts && (
         <ContactList contacts={filteredContacts} />

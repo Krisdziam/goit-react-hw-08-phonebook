@@ -8,12 +8,9 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useAddContactMutation } from 'redux/contactsApi';
 import { useFetchContactsQuery } from 'redux/contactsApi';
 
-
 export default function AddContactPage() {
-  const [addContact] =
-    useAddContactMutation();
+  const [addContact] = useAddContactMutation();
   const { data: contacts } = useFetchContactsQuery();
-
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
   const [id, setId] = useState('');
@@ -106,8 +103,6 @@ export default function AddContactPage() {
           Add <br /> Contact
         </button>
       </form>
-
-   
     </>
   );
 }
