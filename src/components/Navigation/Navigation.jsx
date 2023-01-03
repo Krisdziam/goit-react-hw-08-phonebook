@@ -10,7 +10,7 @@ export default function Navigation() {
       <h1 className={styles.title}>Phonebook</h1>
 
       <Links to="/">Home</Links>
-      {isLoggedIn && <Links to="/contacts">Tasks</Links>}
+      {isLoggedIn && <Links to="/contacts">Contacts</Links>}
     </div>
   );
 }
