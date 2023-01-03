@@ -1,10 +1,12 @@
-import { Suspense, lazy } from 'react';
+import { Suspense, lazy, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { refreshUser } from 'redux/auth/operations';
+import { useAuth } from './hooks/useAuth';
 import Layout from './Layout/Layout';
 import Loader from './Loader/Loader';
-
 
 const LoginPage = lazy(() =>
   import('./Pages/LoginPage/LoginPage')
@@ -20,6 +22,13 @@ const ContactsPage = lazy(() =>
 );
 
 export function App() {
+  const dispatch = useDispatch();
+  const { isRefreshing } = useAuth();
+console.log(isRefreshing);
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
+
   return (
     <Suspense fallback={<Loader />}>
       <Routes>

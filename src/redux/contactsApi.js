@@ -6,7 +6,14 @@ import {
 export const contactApi = createApi({
   reducerPath: 'contactsApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://63924964ac688bbe4c60c1b4.mockapi.io',
+    baseUrl: 'https://connections-api.herokuapp.com',
+    prepareHeaders: (headers, { getState }) => {
+      const token = getState().auth.token;
+      if (token) {
+        headers.set('authorization', `Bearer ${token}`);
+      }
+      return headers;
+    },
   }),
   tagTypes: ['Contact'],
   endpoints: builder => ({
@@ -23,7 +30,7 @@ export const contactApi = createApi({
       invalidatesTags: ['Contact'],
     }),
     deleteContact: builder.mutation({
-      query: (id) => ({
+      query: id => ({
         url: `/contacts/${id}`,
         method: 'DELETE',
       }),
@@ -35,5 +42,5 @@ export const contactApi = createApi({
 export const {
   useFetchContactsQuery,
   useAddContactMutation,
-  useDeleteContactMutation
+  useDeleteContactMutation,
 } = contactApi;
