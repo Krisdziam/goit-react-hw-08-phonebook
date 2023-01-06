@@ -16,6 +16,7 @@ export const ContactList = ({ contacts }) => {
   const noContacts = contacts.length === 0;
   return (
     <div className={styles.containerList}>
+      
       <h2 className={styles.title}>Contacts</h2>
       {noContacts ? (
         <h2>

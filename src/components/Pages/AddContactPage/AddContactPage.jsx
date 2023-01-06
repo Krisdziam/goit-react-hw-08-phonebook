@@ -23,7 +23,6 @@ export default function AddContactPage() {
   const [number, setNumber] = useState('');
   const [id, setId] = useState('');
 
-
   const handleInputChange = e => {
     const { name, value } = e.currentTarget;
     switch (name) {
@@ -73,7 +72,7 @@ export default function AddContactPage() {
         sx={{
           width: 500,
           margin: '0 auto',
-          padding: '40px',
+          padding: '30px',
           borderRadius: '10px',
           color: 'rgb(0, 0, 0)',
           backgroundColor: 'rgba(244, 244, 246, 0.4)',
@@ -128,13 +127,16 @@ export default function AddContactPage() {
                 />
               </div>
             </div>
-           
           </form>
-          <Button sx={{
-            margin: '20px 0'
-          }} color='secondary' type="submit" >
-              Add Contact
-            </Button>
+          <Button
+            sx={{
+              margin: '20px 0',
+            }}
+            variant="contained"
+            type="submit"
+          >
+            Add Contact
+          </Button>
         </CardContent>
       </Card>
     </>
