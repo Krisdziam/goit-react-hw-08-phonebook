@@ -8,16 +8,17 @@ import styles from './Layout.module.css';
 
 export default function Layout() {
   return (
-    <Box >
+    <Box>
       <Box
         sx={{
-          paddingBottom: '10px',
+          paddingBottom: '50px',
         }}
       >
         <Navigation />
       </Box>
-<div className={styles.container}>      <Outlet /></div>
-
+      <div className={styles.container}>
+        <Outlet />
+      </div>
     </Box>
   );
 }

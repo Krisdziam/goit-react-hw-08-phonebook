@@ -12,14 +12,15 @@ export const ContactList = ({ contacts }) => {
       position: toast.POSITION.TOP_CENTER,
       autoClose: 1000,
     });
-    
   };
   const noContacts = contacts.length === 0;
   return (
     <div className={styles.containerList}>
       <h2 className={styles.title}>Contacts</h2>
       {noContacts ? (
-        <h2>There are no contacts in your list, try to add it!</h2>
+        <h2>
+          There are no contacts in your list, try to add it!
+        </h2>
       ) : (
         <ul className={styles.list}>
           {contacts.map(({ name, number, id }) => (

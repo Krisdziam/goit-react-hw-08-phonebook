@@ -1,12 +1,20 @@
 import { useState } from 'react';
 import styles from './AddContactPage.module.css';
 import { nanoid } from 'nanoid';
-import PhoneInput from 'react-phone-number-input';
-import 'react-phone-number-input/style.css';
+import PhoneInput from 'react-phone-input-2';
+import 'react-phone-input-2/lib/style.css';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useAddContactMutation } from 'redux/contactsApi';
 import { useFetchContactsQuery } from 'redux/contactsApi';
+import {
+  Button,
+  Card,
+  CardContent,
+  TextField,
+  Typography,
+} from '@mui/material';
+import { height } from '@mui/system';
 
 export default function AddContactPage() {
   const [addContact] = useAddContactMutation();
@@ -14,6 +22,7 @@ export default function AddContactPage() {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
   const [id, setId] = useState('');
+
 
   const handleInputChange = e => {
     const { name, value } = e.currentTarget;
@@ -60,49 +69,74 @@ export default function AddContactPage() {
 
   return (
     <>
-      <h2 className={styles.subtitle}>Add new contact</h2>
-      <form
-        className={styles.form}
-        onSubmit={handleSubmitForm}
+      <Card
+        sx={{
+          width: 500,
+          margin: '0 auto',
+          padding: '40px',
+          borderRadius: '10px',
+          color: 'rgb(0, 0, 0)',
+          backgroundColor: 'rgba(244, 244, 246, 0.4)',
+          boxShadow: 'rgb(0 0 0 / 20%) 5px 5px 23px 9px',
+        }}
+        variant="outlined"
       >
-        <div className={styles.formContainer}>
-          <div className={styles.inputPadding}>
-            <label className={styles.label}>Name:</label>
-            <input
-              className={styles.input}
-              placeholder="Enter name"
-              onChange={handleInputChange}
-              type="text"
-              name="name"
-              value={name}
-              pattern="^[A-Za-zА-Яа-яЁёІіЇїЄє]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-              required
-            />
-          </div>
-          <div className={styles.phoneContainer}>
-            <label className={styles.label}>Number:</label>
-            <PhoneInput
-              className={styles.inputPhone}
-              defaultCountry="UA"
-              onChange={number => {
-                setNumber(number);
-              }}
-              region="Europe"
-              title="Number"
-              type="tel"
-              name="number"
-              value={number}
-              placeholder="Enter phone number"
-              autoComplete="off"
-              international
-              maxLength="16"
-            />
-          </div>
-        </div>
-        <button type="submit" className={styles.addBtn}>
-          Add <br /> Contact
-        </button>
-      </form>
+        <CardContent
+          sx={{
+            margin: '0 auto',
+            display: 'flex',
+            justifyContent: 'center',
+            flexDirection: 'column',
+            alignItems: 'center',
+          }}
+        >
+          <Typography variant="h5">
+            Add new contact
+          </Typography>
+          <form
+            className={styles.form}
+            onSubmit={handleSubmitForm}
+          >
+            <div className={styles.formContainer}>
+              <div className={styles.inputPadding}>
+                <TextField
+                  id="outlined-basic"
+                  label="Enter name"
+                  variant="outlined"
+                  size="small"
+                  className={styles.input}
+                  onChange={handleInputChange}
+                  type="text"
+                  name="name"
+                  value={name}
+                  pattern="^[A-Za-zА-Яа-яЁёІіЇїЄє]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+                  required
+                />
+              </div>
+              <div className={styles.phoneContainer}>
+                <PhoneInput
+                  className={styles.inputPhone}
+                  country={'ua'}
+                  excludeCountries={'ru'}
+                  onChange={number => {
+                    setNumber(number);
+                  }}
+                  type="tel"
+                  name="number"
+                  value={number}
+                  autocompleteSearch="false"
+                />
+              </div>
+            </div>
+           
+          </form>
+          <Button sx={{
+            margin: '20px 0'
+          }} color='secondary' type="submit" >
+              Add Contact
+            </Button>
+        </CardContent>
+      </Card>
     </>
   );
 }
