@@ -1,3 +1,4 @@
+import { Box } from '@mui/system';
 import { AuthNav } from 'components/AuthNav/AuthNav';
 import { useAuth } from 'components/hooks/useAuth';
 import Navigation from 'components/Navigation/Navigation';
@@ -6,13 +7,17 @@ import { Outlet } from 'react-router-dom';
 import styles from './Layout.module.css';
 
 export default function Layout() {
-
- 
   return (
-    <div className={styles.container}>
-      <Navigation />
- 
-      <Outlet />
-    </div>
+    <Box >
+      <Box
+        sx={{
+          paddingBottom: '10px',
+        }}
+      >
+        <Navigation />
+      </Box>
+<div className={styles.container}>      <Outlet /></div>
+
+    </Box>
   );
 }

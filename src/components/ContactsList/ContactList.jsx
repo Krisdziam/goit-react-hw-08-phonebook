@@ -12,27 +12,33 @@ export const ContactList = ({ contacts }) => {
       position: toast.POSITION.TOP_CENTER,
       autoClose: 1000,
     });
+    
   };
+  const noContacts = contacts.length === 0;
   return (
     <div className={styles.containerList}>
       <h2 className={styles.title}>Contacts</h2>
-      <ul className={styles.list}>
-        {contacts.map(({ name, number, id }) => (
-          <li className={styles.item} key={id}>
-            <div className={styles.textContainer}>
-              <p className={styles.name}>{name}:</p>
-              <p className={styles.number}>{number}</p>
-              <button
-                className={styles.removeBtn}
-                disabled={isLoading}
-                onClick={() => removeContact(id, name)}
-              >
-                X
-              </button>
-            </div>
-          </li>
-        ))}
-      </ul>
+      {noContacts ? (
+        <h2>There are no contacts in your list, try to add it!</h2>
+      ) : (
+        <ul className={styles.list}>
+          {contacts.map(({ name, number, id }) => (
+            <li className={styles.item} key={id}>
+              <div className={styles.textContainer}>
+                <p className={styles.name}>{name}:</p>
+                <p className={styles.number}>{number}</p>
+                <button
+                  className={styles.removeBtn}
+                  disabled={isLoading}
+                  onClick={() => removeContact(id, name)}
+                >
+                  X
+                </button>
+              </div>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 };
