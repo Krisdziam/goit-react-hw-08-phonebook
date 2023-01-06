@@ -11,7 +11,7 @@ export default function Layout() {
   return (
     <div className={styles.container}>
       <Navigation />
-      {isLoggedIn ? <UserMenu /> : <AuthNav />}
+      {/* {isLoggedIn ? <UserMenu /> : <AuthNav />} */}
       <Outlet />
     </div>
   );

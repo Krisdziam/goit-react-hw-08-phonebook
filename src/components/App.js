@@ -9,6 +9,7 @@ import Layout from './Layout/Layout';
 import Loader from './Loader/Loader';
 import PrivatRoute from './UserMenu/PrivatRoute';
 import PublicRoute from './UserMenu/PublicRoute';
+import { Container } from '@mui/material';
 
 const HomePage = lazy(() =>
   import('./Pages/HomePage/HomePage')
@@ -34,6 +35,8 @@ export function App() {
   return isRefreshing ? (
     <Loader />
   ) : (
+    <Container maxWidth="lg">
+
     <Suspense fallback={<Loader />}>
       <Routes>
         <Route path="/" element={<Layout />}>
@@ -67,5 +70,6 @@ export function App() {
       </Routes>
       <ToastContainer />
     </Suspense>
+    </Container>
   );
 }

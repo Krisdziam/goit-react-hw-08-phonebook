@@ -2,4 +2,8 @@
     font-size: 50px;
     text-shadow: 2px 2px 2px rgb(28, 24, 25);
   }
-    
+  .container{
+    display: flex;
+justify-content: space-between;
+color: rgb(254, 217, 217);
+  }
