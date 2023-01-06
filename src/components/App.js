@@ -10,7 +10,6 @@ import Loader from './Loader/Loader';
 import PrivatRoute from './UserMenu/PrivatRoute';
 import PublicRoute from './UserMenu/PublicRoute';
 
-
 const HomePage = lazy(() =>
   import('./Pages/HomePage/HomePage')
 );
@@ -25,7 +24,6 @@ const ContactsPage = lazy(() =>
 );
 
 export function App() {
-
   const dispatch = useDispatch();
   const { isRefreshing } = useAuth();
 
@@ -33,25 +31,38 @@ export function App() {
     dispatch(refreshUser());
   }, [dispatch]);
 
-  return isRefreshing ? ( <Loader/>) : (
+  return isRefreshing ? (
+    <Loader />
+  ) : (
     <Suspense fallback={<Loader />}>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
-         
+
           <Route
             path="contacts"
-            element={ <PrivatRoute><ContactsPage /></PrivatRoute>}
+            element={
+              <PrivatRoute>
+                <ContactsPage />
+              </PrivatRoute>
+            }
           />
           <Route
             path="login"
-            element={ <PublicRoute><LoginPage /></PublicRoute>}
+            element={
+              <PublicRoute>
+                <LoginPage />
+              </PublicRoute>
+            }
           />
-       <Route
+          <Route
             path="register"
-            element={ <PublicRoute><RegisterPage /></PublicRoute>}
+            element={
+              <PublicRoute>
+                <RegisterPage />
+              </PublicRoute>
+            }
           />
-        
         </Route>
       </Routes>
       <ToastContainer />
