@@ -10,6 +10,7 @@ import Loader from './Loader/Loader';
 import PrivatRoute from './UserMenu/PrivatRoute';
 import PublicRoute from './UserMenu/PublicRoute';
 import { Container } from '@mui/material';
+import { Box } from '@mui/system';
 
 const HomePage = lazy(() =>
   import('./Pages/HomePage/HomePage')
@@ -36,40 +37,39 @@ export function App() {
     <Loader />
   ) : (
     <Container maxWidth="lg">
+      <Suspense fallback={<Loader />}>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<HomePage />} />
 
-    <Suspense fallback={<Loader />}>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<HomePage />} />
-
-          <Route
-            path="contacts"
-            element={
-              <PrivatRoute>
-                <ContactsPage />
-              </PrivatRoute>
-            }
-          />
-          <Route
-            path="login"
-            element={
-              <PublicRoute>
-                <LoginPage />
-              </PublicRoute>
-            }
-          />
-          <Route
-            path="register"
-            element={
-              <PublicRoute>
-                <RegisterPage />
-              </PublicRoute>
-            }
-          />
-        </Route>
-      </Routes>
-      <ToastContainer />
-    </Suspense>
+            <Route
+              path="contacts"
+              element={
+                <PrivatRoute>
+                  <ContactsPage />
+                </PrivatRoute>
+              }
+            />
+            <Route
+              path="login"
+              element={
+                <PublicRoute>
+                  <LoginPage />
+                </PublicRoute>
+              }
+            />
+            <Route
+              path="register"
+              element={
+                <PublicRoute>
+                  <RegisterPage />
+                </PublicRoute>
+              }
+            />
+          </Route>
+        </Routes>
+        <ToastContainer />
+      </Suspense>
     </Container>
   );
 }

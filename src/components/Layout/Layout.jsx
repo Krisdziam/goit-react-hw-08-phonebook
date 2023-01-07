@@ -12,6 +12,8 @@ export default function Layout() {
       <Box
         sx={{
           paddingBottom: '50px',
+    
+      
         }}
       >
         <Navigation />

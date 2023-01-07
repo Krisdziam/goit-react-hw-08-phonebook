@@ -2,6 +2,7 @@ import { useDeleteContactMutation } from 'redux/contactsApi';
 import styles from './ContactsList.module.css';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Typography } from '@mui/material';
 
 export const ContactList = ({ contacts }) => {
   const [deleteContact, { isLoading }] =
@@ -17,10 +18,12 @@ export const ContactList = ({ contacts }) => {
   return (
     <div className={styles.containerList}>
       
-      <h2 className={styles.title}>Contacts</h2>
+      <Typography variant="h5">
+         Contacts
+          </Typography>
       {noContacts ? (
         <h2>
-          There are no contacts in your list, try to add it!
+          There are no contacts in your list!
         </h2>
       ) : (
         <ul className={styles.list}>
