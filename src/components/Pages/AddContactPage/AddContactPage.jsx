@@ -134,6 +134,7 @@ export default function AddContactPage() {
             }}
             variant="contained"
             type="submit"
+            onClick={handleSubmitForm}
           >
             Add Contact
           </Button>

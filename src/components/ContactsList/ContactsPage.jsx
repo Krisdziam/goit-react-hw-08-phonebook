@@ -24,11 +24,13 @@ const ContactsPage = () => {
 
   return (
     <>
+  
+      {isLoading && <Loader />}
+    
+      <AddContactPage/>
       {contacts !== undefined && contacts.length > 1 && (
         <Filter />
       )}
-      {isLoading && <Loader />}
-      <AddContactPage/>
       {filteredContacts && (
         <ContactList contacts={filteredContacts} />
       )}
