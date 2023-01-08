@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { useAuth } from 'components/hooks/useAuth';
 import { UserMenu } from 'components/UserMenu/UserMenu';
 import { AppBar, Box, Typography } from '@mui/material';
-import { AuthNav } from 'components/AuthNav/AuthNav';
+// import { AuthNav } from 'components/AuthNav/AuthNav';
 
 export default function Navigation() {
   const { isLoggedIn } = useAuth();
@@ -34,7 +34,7 @@ export default function Navigation() {
           ml: 'auto',
         }}
       >
-        {isLoggedIn ? <UserMenu /> : <AuthNav />}
+        {isLoggedIn ? <UserMenu /> : <UserMenu />}
       </Box>
     </AppBar>
   );
