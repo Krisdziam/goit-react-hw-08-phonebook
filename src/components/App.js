@@ -10,7 +10,6 @@ import Loader from './Loader/Loader';
 import PrivatRoute from './UserMenu/PrivatRoute';
 import PublicRoute from './UserMenu/PublicRoute';
 import { Container } from '@mui/material';
-import { Box } from '@mui/system';
 
 const HomePage = lazy(() =>
   import('./Pages/HomePage/HomePage')
