@@ -1,9 +1,6 @@
 import { Box } from '@mui/system';
-
 import Navigation from 'components/Navigation/Navigation';
-
 import { Outlet } from 'react-router-dom';
-import styles from './Layout.module.css';
 
 export default function Layout() {
   return (
@@ -15,7 +12,7 @@ export default function Layout() {
       >
         <Navigation />
       </Box>
-      <div className={styles.container}>
+      <div>
         <Outlet />
       </div>
     </Box>

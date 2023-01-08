@@ -1,12 +1,10 @@
 import { useDeleteContactMutation } from 'redux/contactsApi';
-import styles from './ContactsList.module.css';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useFetchContactsQuery } from 'redux/contactsApi';
 import {
   Typography,
   ListItemText,
-  ListItemIcon,
-  Grid,
   List,
   ListItem,
   Box,
@@ -17,6 +15,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import IconButton from '@mui/material/IconButton';
 
 export const ContactList = ({ contacts }) => {
+  const { data = [] } = useFetchContactsQuery();
   const [deleteContact, { isLoading }] =
     useDeleteContactMutation();
   const removeContact = (id, name) => {
@@ -26,15 +25,17 @@ export const ContactList = ({ contacts }) => {
       autoClose: 1000,
     });
   };
-  const noContacts = contacts.length === 0;
+  const noContacts = data.length === 0;
   return (
-    <Box sx={{
-      display: 'flex',
-      justifyContent:'center',
-      alignItems: 'center',
-      flexDirection:'column',
-      paddingTop: '15px'
-    }}>
+    <Box
+      sx={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'column',
+        paddingTop: '15px',
+      }}
+    >
       <Card
         sx={{
           width: 500,
@@ -47,7 +48,7 @@ export const ContactList = ({ contacts }) => {
         }}
         variant="outlined"
       >
-          <CardContent
+        <CardContent
           sx={{
             margin: '0 auto',
             display: 'flex',
@@ -56,21 +57,19 @@ export const ContactList = ({ contacts }) => {
             alignItems: 'center',
           }}
         >
-      <Typography
-        variant="h5"
-        sx={{
-          fontWeight: '700',
-        }}
-      >
-        Contacts
-      </Typography>
-      {noContacts ? (
-        <Typography variant="h6">
-          There are no contacts in your list!
-        </Typography>
-      ) : (
-     
-       
+          <Typography
+            variant="h5"
+            sx={{
+              fontWeight: '700',
+            }}
+          >
+            Contacts
+          </Typography>
+          {noContacts ? (
+            <Typography variant="h6">
+              There are no contacts in your list!
+            </Typography>
+          ) : (
             <List>
               {contacts.map(({ name, number, id }) => (
                 <ListItem
@@ -79,13 +78,11 @@ export const ContactList = ({ contacts }) => {
                       edge="end"
                       aria-label="delete"
                       disabled={isLoading}
-                        onClick={() =>
-                          removeContact(id, name)
-                        }
+                      onClick={() =>
+                        removeContact(id, name)
+                      }
                     >
-                      <DeleteIcon
-                        
-                      />
+                      <DeleteIcon />
                     </IconButton>
                   }
                   key={id}
@@ -94,7 +91,7 @@ export const ContactList = ({ contacts }) => {
                     variant="body1"
                     sx={{
                       fontWeight: '700',
-                      marginRight: '5px'
+                      marginRight: '5px',
                     }}
                   >
                     {name}:
@@ -103,29 +100,9 @@ export const ContactList = ({ contacts }) => {
                 </ListItem>
               ))}
             </List>
-        
-      )}
-          </CardContent></Card>
-</Box>
+          )}
+        </CardContent>
+      </Card>
+    </Box>
   );
 };
-
-//  <Grid container spacing={2}>
-//   <Grid item xs={12} md={6}>
-
-//     <List>
-//       {null(
-//         <ListItem
-//           secondaryAction={
-//             <IconButton edge="end" aria-label="delete">
-//               <DeleteIcon />
-//             </IconButton>
-//           }
-//         >
-
-//           <ListItemText primary="Single-line item" />
-//         </ListItem>
-//       )}
-//     </List>
-//   </Grid>
-// </Grid>;

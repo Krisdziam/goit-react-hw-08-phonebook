@@ -1,4 +1,9 @@
-import { Card, CardContent, TextField, Typography } from '@mui/material';
+import {
+  Card,
+  CardContent,
+  TextField,
+  Typography,
+} from '@mui/material';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -20,7 +25,7 @@ const Filter = () => {
   };
   return (
     <div className={styles.filterContainer}>
-         <Card
+      <Card
         sx={{
           width: 500,
           margin: '0 auto',
@@ -32,7 +37,7 @@ const Filter = () => {
         }}
         variant="outlined"
       >
-         <CardContent
+        <CardContent
           sx={{
             margin: '0 auto',
             display: 'flex',
@@ -41,27 +46,29 @@ const Filter = () => {
             alignItems: 'center',
           }}
         >
-      <Typography
-        sx={{
-          paddingBottom: '10px',
-        }}
-        variant="h5"
-      >
-        Find contact by name
-      </Typography>
-      <TextField
-        id="outlined-basic"
-        label="Enter contact name"
-        variant="outlined"
-        size="small"
-        onChange={onChange}
-        name="filter"
-        type="text"
-        value={value}
-        autoComplete="off"
-        required
-      />
-    </CardContent></Card></div>
+          <Typography
+            sx={{
+              paddingBottom: '10px',
+            }}
+            variant="h5"
+          >
+            Find contact by name
+          </Typography>
+          <TextField
+            id="outlined-basic"
+            label="Enter contact name"
+            variant="outlined"
+            size="small"
+            onChange={onChange}
+            name="filter"
+            type="text"
+            value={value}
+            autoComplete="off"
+            required
+          />
+        </CardContent>
+      </Card>
+    </div>
   );
 };
 

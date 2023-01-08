@@ -19,7 +19,7 @@ Register
  */
 export const register = createAsyncThunk(
   'auth/register',
-  async (credentials, thunkAPI) => {
+  async credentials => {
     try {
       const res = await axios.post(
         '/users/signup',
@@ -29,8 +29,23 @@ export const register = createAsyncThunk(
       setAuthHeader(res.data.token);
       return res.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-      console.log(error);
+      const codeError = error.response.status;
+      if (codeError === 400) {
+        toast.error(`You are already registered`, {
+          position: toast.POSITION.TOP_CENTER,
+          autoClose: 1000,
+        });
+      } else if (codeError === 500) {
+        toast.error(`Server Error`, {
+          position: toast.POSITION.TOP_CENTER,
+          autoClose: 1000,
+        });
+      } else {
+        toast.error(`Something went wrong`, {
+          position: toast.POSITION.TOP_CENTER,
+          autoClose: 1000,
+        });
+      }
     }
   }
 );
@@ -40,7 +55,7 @@ Log In
  */
 export const logIn = createAsyncThunk(
   'auth/login',
-  async (credentials, thunkAPI) => {
+  async credentials => {
     try {
       const res = await axios.post(
         '/users/login',
@@ -50,7 +65,13 @@ export const logIn = createAsyncThunk(
       setAuthHeader(res.data.token);
       return res.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      const codeError = error.response.status;
+      if (codeError === 400) {
+        toast.error(`Invalid email and/or password`, {
+          position: toast.POSITION.TOP_CENTER,
+          autoClose: 1000,
+        });
+      }
     }
   }
 );
@@ -88,9 +109,8 @@ export const refreshUser = createAsyncThunk(
 
     try {
       setAuthHeader(persistedToken);
-      const {data} = await axios.get('/users/current');
+      const { data } = await axios.get('/users/current');
       return data;
-    
     } catch (error) {
       clearAuthHeader();
       return thunkAPI.rejectWithValue(error.message);

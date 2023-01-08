@@ -15,7 +15,6 @@ import {
   Typography,
 } from '@mui/material';
 
-
 export default function AddContactPage() {
   const [addContact] = useAddContactMutation();
   const { data: contacts } = useFetchContactsQuery();

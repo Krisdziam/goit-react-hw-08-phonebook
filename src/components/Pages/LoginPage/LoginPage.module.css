@@ -5,8 +5,8 @@
   flex-direction: column;
   margin: auto;
 }
-.label{
-    display: flex;
-    flex-direction: column;
-    padding-bottom: 15px;
+.label {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 15px;
 }

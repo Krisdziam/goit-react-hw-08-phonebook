@@ -7,7 +7,6 @@ import { ContactList } from './ContactList';
 import Filter from 'components/Filter/Filter';
 import AddContactPage from 'components/Pages/AddContactPage/AddContactPage';
 
-
 const ContactsPage = () => {
   const { data: contacts, isLoading } =
     useFetchContactsQuery();
@@ -24,10 +23,9 @@ const ContactsPage = () => {
 
   return (
     <>
-  
       {isLoading && <Loader />}
-    
-      <AddContactPage/>
+
+      <AddContactPage />
       {contacts !== undefined && contacts.length > 1 && (
         <Filter />
       )}

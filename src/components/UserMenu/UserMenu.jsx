@@ -2,6 +2,7 @@ import { Box, Button, Typography } from '@mui/material';
 import { useAuth } from 'components/hooks/useAuth';
 import { useDispatch } from 'react-redux';
 import { logOut } from 'redux/auth/operations';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 export const UserMenu = () => {
   const dispatch = useDispatch();
@@ -11,8 +12,14 @@ export const UserMenu = () => {
     <Box
       sx={{
         display: 'flex',
+        alignItems: 'center',
       }}
     >
+      <AccountCircleIcon
+        sx={{
+          marginRight: '5px',
+        }}
+      />
       <Typography
         fontWeight="400"
         variant="h6"

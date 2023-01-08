@@ -66,7 +66,6 @@ export default function LoginPage() {
                 sx={{
                   marginTop: '10px',
                 }}
-                id="outlined-basic"
                 label="Enter Email"
                 variant="outlined"
                 size="small"
@@ -81,7 +80,6 @@ export default function LoginPage() {
                 sx={{
                   marginTop: '10px',
                 }}
-                id="outlined-basic"
                 label="Enter Password"
                 variant="outlined"
                 size="small"

@@ -1,5 +1,4 @@
 import { NavLink } from 'react-router-dom';
-import styles from './Navigation.module.css';
 import styled from 'styled-components';
 import { useAuth } from 'components/hooks/useAuth';
 import { AuthNav } from 'components/AuthNav/AuthNav';
@@ -59,7 +58,3 @@ export const Links = styled(NavLink)`
     color: rgb(254, 217, 217);
   }
 `;
-
-
-
-
