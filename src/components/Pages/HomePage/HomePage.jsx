@@ -15,7 +15,7 @@ export default function HomePage() {
         }}
       >
         Phonebook... The best solution to save your
-        contacts! Just try, and you can not stop!!!
+        contacts! Just try it!!!
       </Typography>
     </Box>
   );
