@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
-export default function AuthNav ()  {
+export default function AuthNavigation ()  {
   return (
     <div>
       <Links to="/register">Register</Links>
