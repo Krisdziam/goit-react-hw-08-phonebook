@@ -1,14 +1,14 @@
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
-export const AuthNav = () => {
+export default function AuthNav() {
   return (
     <div>
       <Links to="/register">Register</Links>
       <Links to="/login">Log In</Links>
     </div>
   );
-};
+}
 
 export const Links = styled(NavLink)`
   display: inline-block;
