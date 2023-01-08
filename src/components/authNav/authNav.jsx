@@ -4,8 +4,8 @@ import styled from 'styled-components';
 export default function AuthNav() {
   return (
     <div>
-      <Links to="/register">Register</Links>
-      <Links to="/login">Log In</Links>
+      <NavLink to="/register">Register</NavLink>
+      <NavLink to="/login">Log In</NavLink>
     </div>
   );
 }
