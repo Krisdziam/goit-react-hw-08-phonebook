@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
-export default function AuthNav() {
+ function AuthNav() {
   return (
     <div>
       <NavLink to="/register">Register</NavLink>
@@ -10,6 +10,7 @@ export default function AuthNav() {
   );
 }
 
+export default AuthNav
 // export const Links = styled(NavLink)`
 //   display: inline-block;
 //   text-decoration: none;
